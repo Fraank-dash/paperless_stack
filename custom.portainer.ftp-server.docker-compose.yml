@@ -1,0 +1,14 @@
+# a custom ftp-server which i can connect my network-scanner to. the scanner writes the files to the ftp-server whichisthesame as the consume-folderof paperless-ngx...
+
+services:
+    ftp-server:
+        container_name: my-ftp-server
+        environment:
+            - FTP_PASS=admin
+            - FTP_USER=adminuser
+        image: garethflowers/ftp-server
+        ports:
+            - "20-21:20-21/tcp"
+            - "40000-40009:40000-40009/tcp" # For passive mode
+        volumes:
+            - "/home/fraank/Dokumente/paperless/consume/todo:/home/adminuser"
