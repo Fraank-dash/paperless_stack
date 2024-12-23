@@ -43,6 +43,7 @@ services:
     volumes:
       - pgdata:/var/lib/postgresql/data
     environment:
+      # if not "paperless" for db user and pw -> change logindata or env too!
       POSTGRES_DB: paperless
       POSTGRES_USER: paperless
       POSTGRES_PASSWORD: paperless
@@ -65,6 +66,9 @@ services:
     environment:
       PAPERLESS_REDIS: redis://broker:6379
       PAPERLESS_DBHOST: db
+      # PAPERLESS_DBNAME: <name> # default_dbname = paperless
+      # PAPERLESS_DBUSER: <name> #default_dbuser = paperless
+      # PAPERLESS_DBPASS: <password> # default_password = paperless
 # ADMIN-USER+PASSWORD
       PAPERLESS_ADMIN_USER: Admin
       PAPERLESS_ADMIN_PASSWORD: Admin
