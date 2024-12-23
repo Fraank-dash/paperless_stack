@@ -38,6 +38,8 @@ services:
   db:
     image: docker.io/library/postgres:16
     restart: unless-stopped
+    ports:
+      - "5454:5432"
     volumes:
       - pgdata:/var/lib/postgresql/data
     environment:
@@ -75,6 +77,10 @@ services:
 # consumption directory.
       USERMAP_UID: 1000
       USERMAP_GID: 100
+#random settings added because why not?
+      PAPERLESS_FILENAME_FORMAT: "{document_type}/{correspondent}/{created_year}{created_month}{created_day}_{correspondent}_{title}"
+      LANG: de_DE.UTF-8
+      LANGUAGE: de_DE.UTF-8
 # Additional languages to install for text recognition, separated by a
 # whitespace. Note that this is
 # different from PAPERLESS_OCR_LANGUAGE (default=eng), which defines the
