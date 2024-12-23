@@ -82,7 +82,7 @@ services:
       USERMAP_UID: 1000
       USERMAP_GID: 100
 #random settings added because why not?
-      PAPERLESS_FILENAME_FORMAT: "{document_type}/{correspondent}/{created_year}{created_month}{created_day}_{correspondent}_{title}"
+      PAPERLESS_FILENAME_FORMAT: "{{ document_type }}/{{ correspondent }}/{{ created_year }}{{ created_month }}{{ created_day }}_{{ correspondent }}_{{ title }}"
       LANG: de_DE.UTF-8
       LANGUAGE: de_DE.UTF-8
 # Additional languages to install for text recognition, separated by a
