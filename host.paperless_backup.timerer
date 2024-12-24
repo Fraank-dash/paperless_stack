@@ -1,0 +1,10 @@
+[Unit]
+Description= "Lorem Ipsum backuptimer stuff"
+
+[Timer]
+OnCalendar=Sat-Sun *-*-* 8:00:00
+Persistent=true
+Unit=host.paperless_backup.service
+
+[Install]
+WantedBy=multi-user.target
