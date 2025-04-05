@@ -1,0 +1,10 @@
+[Unit]
+Description="Backup for paperless"
+Documentation="todo->linktogithub?"
+PartOf=host.paperless_backup.timer
+
+[Service]
+ExecStart=paperless_backup.sh 
+
+[Install]
+WantedBy=multi-user.target
