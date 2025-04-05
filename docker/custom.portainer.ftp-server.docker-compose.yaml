@@ -1,4 +1,6 @@
-# a custom ftp-server which i can connect my network-scanner to. the scanner writes the files to the ftp-server whichisthesame as the consume-folderof paperless-ngx...
+# a custom ftp-server which i can connect my network-scanner to. 
+# the scanner writes the files to the ftp-server, 
+# which is the same as the consume-folder paperless-ngx...
 
 services:
     ftp-server:
