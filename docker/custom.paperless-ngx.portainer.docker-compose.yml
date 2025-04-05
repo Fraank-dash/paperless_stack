@@ -44,7 +44,7 @@ services:
       - pgdata:/var/lib/postgresql/data
     environment:
       # if not "paperless" for db user and pw -> change logindata or env too!
-      POSTGRES_DB: ${PAPERLESS_POSTGRES_DB}
+      POSTGRES_DB: ${PAPERLESS_POSTGRES_DB} 
       POSTGRES_USER: ${paperless_postgress_user}
       POSTGRES_PASSWORD: ${paperless_postgres_password}
 
@@ -61,8 +61,8 @@ services:
     volumes:
       - data:/usr/src/paperless/data
       - media:/usr/src/paperless/media
-      - /home/fraank/Dokumente/paperless/export:/usr/src/paperless/export
-      - /home/fraank/Dokumente/paperless/consume:/usr/src/paperless/consume
+      - ${PAPERLESS_EXPORT_DIR}:/usr/src/paperless/export # e.g. in my case "/home/fraank/Dokumente/paperless/export"
+      - ${PAPERLESS_CONSUMPTION_DIR}:/usr/src/paperless/consume # e.g. in my case "/home/fraank/Dokumente/paperless/consume"
     environment:
       PAPERLESS_REDIS: redis://broker:6379
       PAPERLESS_DBHOST: db
@@ -104,9 +104,9 @@ services:
       PAPERLESS_OCR_LANGUAGE: deu
       PAPERLESS_OCR_OUTPUT_TYPE: pdfa-3
 # FRONTEND WORKERS
-      PAPERLESS_WEBSERVER_WORKERS: 2
+      PAPERLESS_WEBSERVER_WORKERS: 2 # more than enough for me, myself and i
 # BACKEND WORKERS
-      PAPERLESS_TASK_WORKERS: 2
+      PAPERLESS_TASK_WORKERS: 2  # more than enough for me, myself and i
       PAPERLESS_THREADS_PER_WORKER: 2
 # CONSUME_SUBDIRS_2_TAGS
       PAPERLESS_CONSUMER_RECURSIVE: true
