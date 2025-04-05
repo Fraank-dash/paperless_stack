@@ -2,13 +2,14 @@
 
 services:
     ftp-server:
-        container_name: my-ftp-server
+        container_name: ${FTP_CONTAINER_NAME}
         environment:
-            - FTP_PASS=admin
-            - FTP_USER=adminuser
+            - FTP_PASS=${FTP_PASSWORD}
+            - FTP_USER=${FTP_USERNAME}
         image: garethflowers/ftp-server
         ports:
             - "20-21:20-21/tcp"
             - "40000-40009:40000-40009/tcp" # For passive mode
         volumes:
-            - "/home/fraank/Dokumente/paperless/consume/todo:/home/adminuser"
+            - "${PAPERLESS_CONSUME_PATH}:/home/${FTP_USERNAME}}"
+        restart: always
