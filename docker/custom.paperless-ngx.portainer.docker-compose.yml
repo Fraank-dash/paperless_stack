@@ -45,8 +45,8 @@ services:
     environment:
       # if not "paperless" for db user and pw -> change logindata or env too!
       POSTGRES_DB: ${PAPERLESS_POSTGRES_DB} 
-      POSTGRES_USER: ${paperless_postgress_user}
-      POSTGRES_PASSWORD: ${paperless_postgres_password}
+      POSTGRES_USER: ${PAPERLESS_POSTGRES_USER}
+      POSTGRES_PASSWORD: ${PAPERLESS_POSTGRES_PASSWORD}
 
   webserver:
     image: ghcr.io/paperless-ngx/paperless-ngx:latest
