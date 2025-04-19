@@ -25,7 +25,47 @@ todo: description of my requirements (todo: copy-paste)
 tbd
 
 ### WIP paperless-stack
+```mermaid
+C4Context
+    title System Context for Paperless
+    Enterprise_Boundary(e0, "Home") {
+    System_Boundary(s0, "RPi5") {
+        System_Boundary(d0,"Docker"){
+            Container_Boundary(stack0,"Paperless-Stack"){
+                ContainerQueue(broker, "redis")
+                Container(paperless, "Paperless-NGX")
+                ContainerDb(postgres0, "PostgresDB")
+                Container(gotenberg,"gotenberg")
+                Container(tika,"tika")
+                }
+            Container(samba,"Samba-Server")
+            Container(ftp,"FTP-Server")
+            Container_Boundary(stack1,"IoT-Stack"){
+                ContainerDb(timescale,"timescaleDB")
+                ContainerQueue(broker2, "node-red")
+                Container(mqtt, "MQTT-Mosquitto")
+            }
+        }
+        }
+        
+    System_Boundary(s1, "Remote-Server", "boundary") {
+        Boundary(d1, "Docker-Ecosystem"){
+            ContainerDb(postgres1, "PostgresDB")
+    }
+    }
+    }
+    BiRel(paperless,postgres0,"uses")
+    BiRel(paperless,broker,"uses")
+    BiRel(paperless,gotenberg,"uses")
+    BiRel(paperless,tika,"uses")
+    Rel(paperless,samba,"uses")
+    Rel(paperless,ftp,"uses")
+    Rel(mqtt,broker2,"sends data to")
+    Rel(timescale,broker2,"sends data to")
 
+    UpdateLayoutConfig($c4ShapeInRow="3", $c4BoundaryInRow="1")
+
+```
 todo: description
 
 ### WIP backup
